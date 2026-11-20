@@ -16,3 +16,7 @@ WORKLOG.md
 HANDOFF.md
 *.webm
 *.mkv
+
+# Explicitly attributed public demo videos
+!examples/golf-demo.mp4
+!examples/result/skeleton.mp4

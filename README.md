@@ -101,8 +101,12 @@ python -m pytest -q
 
 ## 许可证
 
-本项目代码使用 MIT。MediaPipe 使用 Apache-2.0；姿态模型来自 [Google 官方 Pose Landmarker 文档](https://developers.google.com/edge/mediapipe/solutions/vision/pose_landmarker?tab=Python)。其他依赖与模型不因本仓库的 MIT 许可证而改换许可证。项目不分发第三方视频或测试照片。
+本项目代码使用 MIT。MediaPipe 使用 Apache-2.0；姿态模型来自 [Google 官方 Pose Landmarker 文档](https://developers.google.com/edge/mediapipe/solutions/vision/pose_landmarker?tab=Python)。其他依赖与模型不因本仓库的 MIT 许可证而改换许可证。示例视频与派生结果按 CC BY 4.0 提供，署名和改动说明见 examples/README.md；其他开发测试照片不分发。
 
 ## 界面
 
 黑色与荧光绿色的本地分析工作台：左侧上传录像和设置，右侧切换原片与骨架回放，下方分栏查看观察摘要、角度曲线、关键帧和导出记录。上传新录像会清空上一份结果，分析成功后自动打开骨架回放。图表与骨架使用统一配色；不显示未经验证的动作评分或发力评分。
+
+## 内置测试数据
+
+见 [示例数据与来源说明](examples/README.md)：包含可以直接试用的输入、离线预览方式、许可证与限制，不附带 API 密钥。

@@ -1,4 +1,5 @@
 import os
+import json
 from pathlib import Path
 
 os.environ.setdefault('GRADIO_ANALYTICS_ENABLED', 'False')
@@ -34,6 +35,19 @@ def reset_clip(video):
     return video, None, None, [], EMPTY_SUMMARY, None, None, None, gr.Tabs(selected='source')
 
 
+def load_sample():
+    return (str(Path(__file__).parent / 'examples/golf-demo.mp4'), 'golf', 'right', 'unknown', 10, .65, 25, 40, 35, 35)
+
+
+def view_sample():
+    folder = Path(__file__).parent / 'examples/result'
+    report = json.loads((folder / 'report.json').read_text(encoding='utf-8'))
+    return (str(folder / 'skeleton.mp4'), str(folder / 'motion.png'), [],
+            (folder / 'summary.md').read_text(encoding='utf-8'), report,
+            [str(folder / n) for n in ['measurements.csv', 'report.json', 'summary.md']],
+            gr.Tabs(selected='analysis'))
+
+
 def build_app():
     theme = gr.themes.Base(primary_hue='lime', neutral_hue='zinc', font=['Inter', 'PingFang SC', 'system-ui', 'sans-serif']).set(
         body_background_fill='#080b09', body_background_fill_dark='#080b09',
@@ -62,6 +76,9 @@ def build_app():
                 sport = gr.Radio([('网球', 'tennis'), ('高尔夫', 'golf'), ('滑雪', 'skiing')], value='tennis', label='选择运动', elem_id='mc-sport')
                 video = gr.File(type='filepath', file_types=['video'], label='上传录像', elem_id='mc-upload')
                 gr.Markdown('单人 · 固定机位 · 全身入镜  \n最多分析前 60 秒，文件不超过 500 MB。', elem_classes=['mc-hint'])
+                sample_load = gr.Button('加载高尔夫示例', size='sm')
+                sample_view = gr.Button('直接看示例结果 · 无需等待', size='sm')
+                gr.Markdown('[Nesnad / CC BY 4.0](https://commons.wikimedia.org/wiki/File:Manpracticinggolfswing-slowmotion-2021-3-24.webm) · 慢动作样例，检测有抖动，仅用于试用。', elem_classes=['mc-hint'])
                 side = gr.Radio([('右侧', 'right'), ('左侧', 'left')], value='right', label='惯用侧 · 网球 / 高尔夫')
                 with gr.Accordion('拍摄与分析设置', open=False):
                     view = gr.Radio([('正面 / 背面', 'front'), ('侧面', 'side'), ('不确定', 'unknown')], value='unknown', label='拍摄方向', info='只记录方向，不自动校正透视。')
@@ -101,6 +118,8 @@ def build_app():
                     report = gr.JSON(label='报告')
         gr.HTML('<footer class="mc-footer"><strong>观察动作，不替代教练。</strong><p>画面投影不等于真实力量、承重或伤病风险。请确认画面实际只有一人，模型可能漏检旁人。姿态在本机处理；依赖联网行为与数据保存说明见 README。</p><span>MOTION / COACH <b>SOFTWARE ALPHA · 2D</b></span></footer>')
         outputs = [output, chart, gallery, summary, report, files]
+        sample_load.click(load_sample, outputs=[video, sport, side, view, fps, threshold, crop_left, crop_top, crop_width, crop_height], api_name='load_sample')
+        sample_view.click(view_sample, outputs=[*outputs, viewer], api_name='view_sample')
         video.change(reset_clip, video, [source, *outputs, preview_image, viewer], queue=False)
         button.click(run_studio, [video, threshold, sport, side, view, fps, crop_left, crop_top, crop_width, crop_height], [*outputs, viewer], concurrency_limit=1)
     return demo

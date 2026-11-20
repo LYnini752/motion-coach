@@ -1,0 +1,16 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Manpracticinggolfswing-slowmotion-2021-3-24.webm",
+  "author": "Nesnad",
+  "license": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "source_sha256": "c132db7ae57ea91e2ad988ed638590d19582ede9c5c724fe1aa3e24f448e0beb",
+  "modifications": "Original slow-motion video transcoded to silent H.264 at 15 fps. Results: crop percentages 25/40/35/35, analysis at 10 fps, threshold 0.65; skeleton overlays and charts added. Playback speed not restored.",
+  "files": {
+    "golf-demo.mp4": "1789208e4ad5003574f990274c65fa6a76267599f4e6393b58a9d62234dc2c4f",
+    "result/skeleton.mp4": "ab1c168f03c686efce283773b64512f0a96a7306ccfea59468ce3777bb23f295",
+    "result/report.json": "e0c5490ed84396b925b91f39d0cd645eb281916dfc629606ebcb5760ecd058a0",
+    "result/summary.md": "26748cac2fef350d110042e86c88c1ce45d4cdf9294dbf692221ddfbe8a261c1",
+    "result/measurements.csv": "3ff2e73ebdbd9172a3046a002531fde65b87a37fe8fa42f1514e46272bc66a4a",
+    "result/motion.png": "4941e21988e048696627edb91c725d396fd3edc00ece9981ed9dedf5ce681d8a"
+  }
+}

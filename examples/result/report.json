@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "sport": "golf",
+  "dominant_side": "right",
+  "camera_view": "unknown",
+  "status": "measured",
+  "sampled_frames": 172,
+  "usable_frames": 155,
+  "no_pose_frames": 17,
+  "multiple_person_frames": 0,
+  "low_confidence_frames": 0,
+  "coverage": 0.901,
+  "sample_fps": 10.0,
+  "processed_seconds": 17.2,
+  "source_fps_reported": 15.0,
+  "input_duration_estimate": 17.2,
+  "frame_size": [
+    162,
+    188
+  ],
+  "threshold": 0.65,
+  "metrics": {
+    "left_elbow": {
+      "valid_frames": 155,
+      "coverage": 0.901,
+      "min": 34.152,
+      "max": 173.007,
+      "median": 117.917,
+      "unit": "degrees"
+    },
+    "right_elbow": {
+      "valid_frames": 131,
+      "coverage": 0.762,
+      "min": 33.169,
+      "max": 178.435,
+      "median": 135.147,
+      "unit": "degrees"
+    },
+    "left_knee": {
+      "valid_frames": 155,
+      "coverage": 0.901,
+      "min": 156.777,
+      "max": 179.861,
+      "median": 174.917,
+      "unit": "degrees"
+    },
+    "right_knee": {
+      "valid_frames": 155,
+      "coverage": 0.901,
+      "min": 149.705,
+      "max": 179.995,
+      "median": 175.062,
+      "unit": "degrees"
+    },
+    "left_hip": {
+      "valid_frames": 155,
+      "coverage": 0.901,
+      "min": 143.494,
+      "max": 179.37,
+      "median": 172.133,
+      "unit": "degrees"
+    },
+    "right_hip": {
+      "valid_frames": 155,
+      "coverage": 0.901,
+      "min": 130.879,
+      "max": 161.29,
+      "median": 148.849,
+      "unit": "degrees"
+    },
+    "torso_tilt": {
+      "valid_frames": 155,
+      "coverage": 0.901,
+      "min": -21.555,
+      "max": -4.109,
+      "median": -16.027,
+      "unit": "degrees"
+    },
+    "shoulder_hip_line_angle": {
+      "valid_frames": 155,
+      "coverage": 0.901,
+      "min": 0.084,
+      "max": 19.894,
+      "median": 5.998,
+      "unit": "degrees"
+    },
+    "left_wrist_speed_smoothed": {
+      "valid_frames": 152,
+      "coverage": 0.884,
+      "min": 0.229,
+      "max": 6.779,
+      "median": 0.892,
+      "unit": "torso_lengths/s"
+    },
+    "right_wrist_speed_smoothed": {
+      "valid_frames": 110,
+      "coverage": 0.64,
+      "min": 0.421,
+      "max": 10.064,
+      "median": 1.373,
+      "unit": "torso_lengths/s"
+    },
+    "left_knee_angular_speed_smoothed": {
+      "valid_frames": 152,
+      "coverage": 0.884,
+      "min": 1.116,
+      "max": 134.895,
+      "median": 17.547,
+      "unit": "degrees/s"
+    },
+    "right_knee_angular_speed_smoothed": {
+      "valid_frames": 152,
+      "coverage": 0.884,
+      "min": 1.28,
+      "max": 172.211,
+      "median": 21.231,
+      "unit": "degrees/s"
+    }
+  },
+  "keyframes": [],
+  "subject_height_pixels_median": 77.02,
+  "quality_warnings": [
+    "人物像素高度不足 120，可能有明显关节抖动；已隐藏关键帧候选。请用更近、更清晰的全身录像。"
+  ],
+  "force_estimated": false,
+  "time_basis": "video_playback_seconds",
+  "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+  "crop_percent": [
+    25,
+    40,
+    35,
+    35
+  ],
+  "landmark_coordinate_space": "cropped_upright_square_pixel_frame",
+  "limitations": [
+    "所有角度和速度均来自二维画面投影，受机位、遮挡、镜头移动和透视影响。",
+    "手腕速度以画面中的躯干长度归一化，不是米/秒，也不是球拍或球杆速度。",
+    "时间和速度基于视频播放时间轴；慢动作、加速或剪辑视频不能直接代表真实动作速度。",
+    "关键帧是数值极值候选，不代表击球时刻、挥杆分期或转弯完成。",
+    "不能据此测量真实力量、关节力矩、足底/雪板压力、真实重心或给出伤病诊断。",
+    "最多处理前 60 秒；输出视频无音轨。低置信度、画面外和检测到多人的帧留空，不跨缺失帧插值。",
+    "检测器可能漏掉其他人；pose_count=1 不保证画面实际只有一人，请先确认录像为单人。",
+    "请使用同一人、无剪辑、固定机位录像。模型不提供人物身份追踪；突然切换人物可能无法辨识。"
+  ],
+  "review_prompts": [
+    "回看挥杆前后膝角与躯干投影的变化，结合原片确认球杆位置。",
+    "肩髋连线的画面夹角受机位影响，不能作为真实转髋角或 X-factor。"
+  ],
+  "elapsed_seconds": 3.45
+}
