@@ -15,3 +15,6 @@ Use **加载高尔夫示例** to fill the video and preset, then start analysis.
 Credit: Nesnad, *Man practicing golf swing (slow motion)*, 2021-03-24, linked above, CC BY 4.0. Changes: silent H.264/15 fps transcode; derived outputs add skeleton overlays and measured charts, using the documented crop and 10 fps analysis. No endorsement is implied. Hashes and transformations are in `manifest.json`.
 
 The original subject is small; jitter and missing observations are real limitations. Slow-motion playback time is not real-world movement time. This is a functional example, not a validated golf coaching result. Data and media keep CC BY 4.0; the repository's MIT license does not replace their license.
+
+打开网页即载入高尔夫原片；点“开始分析”运行本机模型，或点“直接看示例结果”查看预计算输出。上传自己的片段时请调整人物区域。
+The page loads the golf clip by default. Run analysis locally or open the precomputed result. Adjust the crop when uploading your own clip.

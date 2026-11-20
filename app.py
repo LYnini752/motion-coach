@@ -49,6 +49,7 @@ def view_sample():
 
 
 def build_app():
+    sample_path = load_sample()[0]
     theme = gr.themes.Base(primary_hue='lime', neutral_hue='zinc', font=['Inter', 'PingFang SC', 'system-ui', 'sans-serif']).set(
         body_background_fill='#080b09', body_background_fill_dark='#080b09',
         body_text_color='#edf3e9', body_text_color_dark='#edf3e9',
@@ -73,24 +74,25 @@ def build_app():
         with gr.Row(equal_height=False, elem_id='mc-workspace'):
             with gr.Column(scale=3, min_width=300, elem_id='mc-controls'):
                 gr.HTML('<div class="mc-section"><span>01 / SETUP</span><h2>准备你的片段</h2></div>')
-                sport = gr.Radio([('网球', 'tennis'), ('高尔夫', 'golf'), ('滑雪', 'skiing')], value='tennis', label='选择运动', elem_id='mc-sport')
-                video = gr.File(type='filepath', file_types=['video'], label='上传录像', elem_id='mc-upload')
+                sport = gr.Radio([('网球', 'tennis'), ('高尔夫', 'golf'), ('滑雪', 'skiing')], value='golf', label='选择运动', elem_id='mc-sport')
+                video = gr.File(value=sample_path, type='filepath', file_types=['video'], label='上传录像', elem_id='mc-upload')
                 gr.Markdown('单人 · 固定机位 · 全身入镜  \n最多分析前 60 秒，文件不超过 500 MB。', elem_classes=['mc-hint'])
-                sample_load = gr.Button('加载高尔夫示例', size='sm')
+                gr.Markdown('**已载入免费高尔夫示例** · 直接播放右侧视频，或点“开始分析”。上传自己的录像可替换示例。')
+                sample_load = gr.Button('重新载入高尔夫示例', size='sm')
                 sample_view = gr.Button('直接看示例结果 · 无需等待', size='sm')
                 gr.Markdown('[Nesnad / CC BY 4.0](https://commons.wikimedia.org/wiki/File:Manpracticinggolfswing-slowmotion-2021-3-24.webm) · 慢动作样例，检测有抖动，仅用于试用。', elem_classes=['mc-hint'])
                 side = gr.Radio([('右侧', 'right'), ('左侧', 'left')], value='right', label='惯用侧 · 网球 / 高尔夫')
                 with gr.Accordion('拍摄与分析设置', open=False):
                     view = gr.Radio([('正面 / 背面', 'front'), ('侧面', 'side'), ('不确定', 'unknown')], value='unknown', label='拍摄方向', info='只记录方向，不自动校正透视。')
                     threshold = gr.Slider(.3, .95, value=.65, step=.05, label='关键点置信度')
-                    fps = gr.Radio([10, 15, 30], value=15, label='分析帧率', info='快速挥拍可选 30，处理耗时更长。')
-                    gr.Markdown('**人物区域** · 默认使用完整画面。裁剪时，请确保整个动作都在框内。')
+                    fps = gr.Radio([10, 15, 30], value=10, label='分析帧率', info='快速挥拍可选 30，处理耗时更长。')
+                    gr.Markdown('**人物区域** · 已按高尔夫示例设置裁剪。上传自己的视频后请调整；请确保整个动作都在框内。')
                     with gr.Row():
-                        crop_left = gr.Number(value=0, minimum=0, maximum=95, label='左边起点 %')
-                        crop_top = gr.Number(value=0, minimum=0, maximum=95, label='上边起点 %')
+                        crop_left = gr.Number(value=25, minimum=0, maximum=95, label='左边起点 %')
+                        crop_top = gr.Number(value=40, minimum=0, maximum=95, label='上边起点 %')
                     with gr.Row():
-                        crop_width = gr.Number(value=100, minimum=5, maximum=100, label='区域宽度 %')
-                        crop_height = gr.Number(value=100, minimum=5, maximum=100, label='区域高度 %')
+                        crop_width = gr.Number(value=35, minimum=5, maximum=100, label='区域宽度 %')
+                        crop_height = gr.Number(value=35, minimum=5, maximum=100, label='区域高度 %')
                     preview_button = gr.Button('预览人物区域', size='sm')
                     preview_image = gr.Image(label='首帧裁剪预览', interactive=False)
                     preview_button.click(preview, [video, crop_left, crop_top, crop_width, crop_height], preview_image)
@@ -100,7 +102,7 @@ def build_app():
                 gr.HTML('<div class="mc-section mc-stage-heading"><div><span>02 / REPLAY</span><h2>你的动作，逐帧看清</h2></div><span class="mc-tag">VIDEO WORKSPACE</span></div>')
                 with gr.Tabs(elem_id='mc-viewer') as viewer:
                     with gr.Tab('原始录像', id='source'):
-                        source = gr.Video(label='上传后在这里预览原片', interactive=False, height=365, elem_id='mc-source')
+                        source = gr.Video(value=sample_path, label='原始录像 · 已载入高尔夫示例', interactive=False, height=365, elem_id='mc-source')
                     with gr.Tab('骨架回放', id='analysis'):
                         output = gr.Video(label='分析后显示骨架视频 · 无音轨', interactive=False, height=365)
                 gr.HTML('<div class="mc-caption"><span class="mc-line"></span> 单人姿态追踪 <span>二维关节角度 / 动作变化 / 关键帧</span></div>')
