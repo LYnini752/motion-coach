@@ -1,16 +1,66 @@
 {
-  "source": "https://commons.wikimedia.org/wiki/File:Manpracticinggolfswing-slowmotion-2021-3-24.webm",
-  "author": "Nesnad",
-  "license": "CC-BY-4.0",
-  "license_url": "https://creativecommons.org/licenses/by/4.0/",
-  "source_sha256": "c132db7ae57ea91e2ad988ed638590d19582ede9c5c724fe1aa3e24f448e0beb",
-  "modifications": "Original slow-motion video transcoded to silent H.264 at 15 fps. Results: crop percentages 25/40/35/35, analysis at 10 fps, threshold 0.65; skeleton overlays and charts added. Playback speed not restored.",
+  "default": {
+    "source": "https://commons.wikimedia.org/wiki/File:Suvichaya_Vinijchaitham_Golf_Swing_Slow_Mo_2026.webm",
+    "author": "Hut2026",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source_sha256": "7b748b86b794790bd079b629fb124b71e446d228aeabf12ddfe11b46a1406c44",
+    "trim_seconds": [
+      0,
+      16
+    ],
+    "resolution": [
+      1080,
+      1920
+    ],
+    "fps": 30,
+    "audio_removed": true,
+    "analysis": {
+      "fps": 15,
+      "threshold": 0.65,
+      "crop_percent": [
+        0,
+        0,
+        100,
+        100
+      ],
+      "sport": "golf",
+      "side": "right",
+      "view": "side"
+    }
+  },
+  "event": {
+    "source": "https://www.youtube.com/watch?v=3Y3NyhUlVag",
+    "download_source": "https://commons.wikimedia.org/wiki/File:History_Awaits_Dustin_Johnson_at_The_U.S._Open.webm",
+    "author": "FOX Sports",
+    "license": "CC-BY-3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0/",
+    "source_sha256": "3d5d9f756564307b22137ef75bdacbe8d7764165b6129264d280af544336efe8",
+    "trim_seconds": [
+      1.7,
+      5.7
+    ],
+    "resolution": [
+      1280,
+      720
+    ],
+    "fps": 30,
+    "audio_removed": true,
+    "purpose": "Viewing only; contains cuts"
+  },
   "files": {
-    "golf-demo.mp4": "1789208e4ad5003574f990274c65fa6a76267599f4e6393b58a9d62234dc2c4f",
-    "result/skeleton.mp4": "ab1c168f03c686efce283773b64512f0a96a7306ccfea59468ce3777bb23f295",
-    "result/report.json": "e0c5490ed84396b925b91f39d0cd645eb281916dfc629606ebcb5760ecd058a0",
-    "result/summary.md": "26748cac2fef350d110042e86c88c1ce45d4cdf9294dbf692221ddfbe8a261c1",
-    "result/measurements.csv": "3ff2e73ebdbd9172a3046a002531fde65b87a37fe8fa42f1514e46272bc66a4a",
-    "result/motion.png": "4941e21988e048696627edb91c725d396fd3edc00ece9981ed9dedf5ce681d8a"
+    "golf-demo.mp4": "2c73da730d5c43d41a3337bd790f29f4d51162ce35ed7448e74e6d3aeeddd822",
+    "golf-event.mp4": "03f6676bef1fa9d5faf9218d579f11700a0d55476c16dbf41742320c09475b22",
+    "result/gallery.json": "a1011fb75e20a3aedf01b3f5f56186cb9770618531045f105c5e51c39d6a4584",
+    "result/keyframe_1.jpg": "7969c89ac6e1ceae9914c68180263d601ab41265d5615de20093d0e48ef863a8",
+    "result/keyframe_2.jpg": "b41ebf07e4938898e2659483f546f0b3f521601bf4affb0c451ee3099770d888",
+    "result/keyframe_3.jpg": "c534180c829b7ea263f8497b70b6dc2faeded1f6bd97e8d29f20ccef74932f69",
+    "result/keyframe_4.jpg": "042af46f48fc2f4d51c7f2f7ce434b994e78c05dcbee815042b8ec1059efaac9",
+    "result/keyframe_5.jpg": "353ba3eeb73fb056f6989be9c42065648c6686c5d7b0b14072148f06ea8d979b",
+    "result/measurements.csv": "b3222d68b2dd0e3d7709eab5b0e0a01c883c76e9689d7744d9336c2cf7a8f1ea",
+    "result/motion.png": "ef2725a394ab97039c08849311d5ade6d92916e2774dd67ab09c38726129cf40",
+    "result/report.json": "71d7855bb91704165615c3d610e677c610749ff107f2356d8e4a3aba5d9ba07e",
+    "result/skeleton.mp4": "fd3e754d003e762dc70fbe008107cff42b1249e8abdaa086395a272e02c33e4f",
+    "result/summary.md": "95f0c6b0a79c70e8f4c6cc7703d612d0efaa426ea2cece955c5ffee18afd7014"
   }
 }

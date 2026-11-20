@@ -2,134 +2,169 @@
   "schema_version": 1,
   "sport": "golf",
   "dominant_side": "right",
-  "camera_view": "unknown",
+  "camera_view": "side",
   "status": "measured",
-  "sampled_frames": 172,
-  "usable_frames": 155,
-  "no_pose_frames": 17,
+  "sampled_frames": 240,
+  "usable_frames": 240,
+  "no_pose_frames": 0,
   "multiple_person_frames": 0,
   "low_confidence_frames": 0,
-  "coverage": 0.901,
-  "sample_fps": 10.0,
-  "processed_seconds": 17.2,
-  "source_fps_reported": 15.0,
-  "input_duration_estimate": 17.2,
+  "coverage": 1.0,
+  "sample_fps": 15.0,
+  "processed_seconds": 16.0,
+  "source_fps_reported": 30.0,
+  "input_duration_estimate": 16.0,
   "frame_size": [
-    162,
-    188
+    540,
+    960
   ],
   "threshold": 0.65,
   "metrics": {
     "left_elbow": {
-      "valid_frames": 155,
-      "coverage": 0.901,
-      "min": 34.152,
-      "max": 173.007,
-      "median": 117.917,
+      "valid_frames": 111,
+      "coverage": 0.463,
+      "min": 45.68,
+      "max": 178.099,
+      "median": 102.511,
       "unit": "degrees"
     },
     "right_elbow": {
-      "valid_frames": 131,
-      "coverage": 0.762,
-      "min": 33.169,
-      "max": 178.435,
-      "median": 135.147,
+      "valid_frames": 146,
+      "coverage": 0.608,
+      "min": 28.717,
+      "max": 177.305,
+      "median": 147.382,
       "unit": "degrees"
     },
     "left_knee": {
-      "valid_frames": 155,
-      "coverage": 0.901,
-      "min": 156.777,
-      "max": 179.861,
-      "median": 174.917,
+      "valid_frames": 136,
+      "coverage": 0.567,
+      "min": 126.479,
+      "max": 179.913,
+      "median": 162.586,
       "unit": "degrees"
     },
     "right_knee": {
-      "valid_frames": 155,
-      "coverage": 0.901,
-      "min": 149.705,
-      "max": 179.995,
-      "median": 175.062,
+      "valid_frames": 227,
+      "coverage": 0.946,
+      "min": 135.863,
+      "max": 179.919,
+      "median": 161.266,
       "unit": "degrees"
     },
     "left_hip": {
-      "valid_frames": 155,
-      "coverage": 0.901,
-      "min": 143.494,
-      "max": 179.37,
-      "median": 172.133,
+      "valid_frames": 136,
+      "coverage": 0.567,
+      "min": 115.453,
+      "max": 165.74,
+      "median": 143.023,
       "unit": "degrees"
     },
     "right_hip": {
-      "valid_frames": 155,
-      "coverage": 0.901,
-      "min": 130.879,
-      "max": 161.29,
-      "median": 148.849,
+      "valid_frames": 227,
+      "coverage": 0.946,
+      "min": 117.976,
+      "max": 158.116,
+      "median": 140.941,
       "unit": "degrees"
     },
     "torso_tilt": {
-      "valid_frames": 155,
-      "coverage": 0.901,
-      "min": -21.555,
-      "max": -4.109,
-      "median": -16.027,
+      "valid_frames": 240,
+      "coverage": 1.0,
+      "min": 16.044,
+      "max": 36.933,
+      "median": 30.146,
       "unit": "degrees"
     },
     "shoulder_hip_line_angle": {
-      "valid_frames": 155,
-      "coverage": 0.901,
-      "min": 0.084,
-      "max": 19.894,
-      "median": 5.998,
+      "valid_frames": 236,
+      "coverage": 0.983,
+      "min": 1.727,
+      "max": 86.995,
+      "median": 13.21,
       "unit": "degrees"
     },
     "left_wrist_speed_smoothed": {
-      "valid_frames": 152,
-      "coverage": 0.884,
-      "min": 0.229,
-      "max": 6.779,
-      "median": 0.892,
+      "valid_frames": 110,
+      "coverage": 0.458,
+      "min": 0.105,
+      "max": 1.204,
+      "median": 0.333,
       "unit": "torso_lengths/s"
     },
     "right_wrist_speed_smoothed": {
-      "valid_frames": 110,
-      "coverage": 0.64,
-      "min": 0.421,
-      "max": 10.064,
-      "median": 1.373,
+      "valid_frames": 143,
+      "coverage": 0.596,
+      "min": 0.089,
+      "max": 2.821,
+      "median": 0.405,
       "unit": "torso_lengths/s"
     },
     "left_knee_angular_speed_smoothed": {
-      "valid_frames": 152,
-      "coverage": 0.884,
-      "min": 1.116,
-      "max": 134.895,
-      "median": 17.547,
+      "valid_frames": 120,
+      "coverage": 0.5,
+      "min": 4.369,
+      "max": 76.459,
+      "median": 18.973,
       "unit": "degrees/s"
     },
     "right_knee_angular_speed_smoothed": {
-      "valid_frames": 152,
-      "coverage": 0.884,
-      "min": 1.28,
-      "max": 172.211,
-      "median": 21.231,
+      "valid_frames": 212,
+      "coverage": 0.883,
+      "min": 2.329,
+      "max": 87.486,
+      "median": 18.362,
       "unit": "degrees/s"
     }
   },
-  "keyframes": [],
-  "subject_height_pixels_median": 77.02,
-  "quality_warnings": [
-    "人物像素高度不足 120，可能有明显关节抖动；已隐藏关键帧候选。请用更近、更清晰的全身录像。"
+  "keyframes": [
+    {
+      "title": "惯用侧手腕相对移动峰值候选",
+      "metric": "right_wrist_speed_smoothed",
+      "frame_index": 131,
+      "seconds": 8.733333,
+      "value": 2.821,
+      "kind": "candidate"
+    },
+    {
+      "title": "候选峰值前约 0.3 秒",
+      "frame_index": 127,
+      "seconds": 8.466667,
+      "kind": "context"
+    },
+    {
+      "title": "候选峰值后约 0.3 秒",
+      "frame_index": 135,
+      "seconds": 9.0,
+      "kind": "context"
+    },
+    {
+      "title": "惯用侧膝角变化速度峰值候选",
+      "metric": "right_knee_angular_speed_smoothed",
+      "frame_index": 54,
+      "seconds": 3.6,
+      "value": 87.486,
+      "kind": "candidate"
+    },
+    {
+      "title": "left_hip 最小投影角候选",
+      "metric": "left_hip",
+      "frame_index": 114,
+      "seconds": 7.6,
+      "value": 115.453,
+      "kind": "candidate"
+    }
   ],
+  "subject_height_pixels_median": 316.995,
+  "quality_warnings": [],
   "force_estimated": false,
   "time_basis": "video_playback_seconds",
   "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
   "crop_percent": [
-    25,
-    40,
-    35,
-    35
+    0,
+    0,
+    100,
+    100
   ],
   "landmark_coordinate_space": "cropped_upright_square_pixel_frame",
   "limitations": [
@@ -146,5 +181,5 @@
     "回看挥杆前后膝角与躯干投影的变化，结合原片确认球杆位置。",
     "肩髋连线的画面夹角受机位影响，不能作为真实转髋角或 X-factor。"
   ],
-  "elapsed_seconds": 3.45
+  "elapsed_seconds": 6.99
 }

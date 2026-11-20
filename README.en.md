@@ -95,7 +95,7 @@ python -m pytest -q
 
 Lightweight CI covers geometry, time differences, missing values, jitter suppression, and mode differences. It does not replace real-video evaluation or professional coaching validation.
 
-Project code is MIT. MediaPipe is Apache-2.0; models come from the [official Pose Landmarker documentation](https://developers.google.com/edge/mediapipe/solutions/vision/pose_landmarker?tab=Python). Dependencies/models retain their respective licenses. The credited sample video and derived results retain CC BY 4.0; see examples/README.md. Other developer test photographs are not distributed.
+Project code is MIT. MediaPipe is Apache-2.0; models come from the [official Pose Landmarker documentation](https://developers.google.com/edge/mediapipe/solutions/vision/pose_landmarker?tab=Python). Dependencies/models retain their respective licenses. The HD default sample is CC0; the credited FOX Sports excerpt retains CC BY 3.0. See examples/README.md for attribution and edits. Other developer test photographs are not distributed.
 
 ## Interface
 

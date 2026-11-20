@@ -101,7 +101,7 @@ python -m pytest -q
 
 ## 许可证
 
-本项目代码使用 MIT。MediaPipe 使用 Apache-2.0；姿态模型来自 [Google 官方 Pose Landmarker 文档](https://developers.google.com/edge/mediapipe/solutions/vision/pose_landmarker?tab=Python)。其他依赖与模型不因本仓库的 MIT 许可证而改换许可证。示例视频与派生结果按 CC BY 4.0 提供，署名和改动说明见 examples/README.md；其他开发测试照片不分发。
+本项目代码使用 MIT。MediaPipe 使用 Apache-2.0；姿态模型来自 [Google 官方 Pose Landmarker 文档](https://developers.google.com/edge/mediapipe/solutions/vision/pose_landmarker?tab=Python)。其他依赖与模型不因本仓库的 MIT 许可证而改换许可证。高清默认示例按 CC0 提供，FOX Sports 赛事选段按 CC BY 3.0 提供；署名和剪辑说明见 examples/README.md；其他开发测试照片不分发。
 
 ## 界面
 

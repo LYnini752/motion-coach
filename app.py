@@ -36,13 +36,14 @@ def reset_clip(video):
 
 
 def load_sample():
-    return (str(Path(__file__).parent / 'examples/golf-demo.mp4'), 'golf', 'right', 'unknown', 10, .65, 25, 40, 35, 35)
+    return (str(Path(__file__).parent / 'examples/golf-demo.mp4'), 'golf', 'right', 'side', 15, .65, 0, 0, 100, 100)
 
 
 def view_sample():
     folder = Path(__file__).parent / 'examples/result'
     report = json.loads((folder / 'report.json').read_text(encoding='utf-8'))
-    return (str(folder / 'skeleton.mp4'), str(folder / 'motion.png'), [],
+    gallery = [(str(folder / name), caption) for name, caption in json.loads((folder / 'gallery.json').read_text(encoding='utf-8'))]
+    return (str(folder / 'skeleton.mp4'), str(folder / 'motion.png'), gallery,
             (folder / 'summary.md').read_text(encoding='utf-8'), report,
             [str(folder / n) for n in ['measurements.csv', 'report.json', 'summary.md']],
             gr.Tabs(selected='analysis'))
@@ -77,22 +78,22 @@ def build_app():
                 sport = gr.Radio([('网球', 'tennis'), ('高尔夫', 'golf'), ('滑雪', 'skiing')], value='golf', label='选择运动', elem_id='mc-sport')
                 video = gr.File(value=sample_path, type='filepath', file_types=['video'], label='上传录像', elem_id='mc-upload')
                 gr.Markdown('单人 · 固定机位 · 全身入镜  \n最多分析前 60 秒，文件不超过 500 MB。', elem_classes=['mc-hint'])
-                gr.Markdown('**已载入免费高尔夫示例** · 直接播放右侧视频，或点“开始分析”。上传自己的录像可替换示例。')
-                sample_load = gr.Button('重新载入高尔夫示例', size='sm')
+                gr.Markdown('**已载入高清高尔夫示例 · 1080p** · 直接播放右侧视频，或点“开始分析”。上传自己的录像可替换示例。')
+                sample_load = gr.Button('重新载入高清挥杆示例', size='sm')
                 sample_view = gr.Button('直接看示例结果 · 无需等待', size='sm')
-                gr.Markdown('[Nesnad / CC BY 4.0](https://commons.wikimedia.org/wiki/File:Manpracticinggolfswing-slowmotion-2021-3-24.webm) · 慢动作样例，检测有抖动，仅用于试用。', elem_classes=['mc-hint'])
+                gr.Markdown('[Hut2026 / CC0](https://commons.wikimedia.org/wiki/File:Suvichaya_Vinijchaitham_Golf_Swing_Slow_Mo_2026.webm) · 16 秒完整近景慢动作，仅用于试用。', elem_classes=['mc-hint'])
                 side = gr.Radio([('右侧', 'right'), ('左侧', 'left')], value='right', label='惯用侧 · 网球 / 高尔夫')
                 with gr.Accordion('拍摄与分析设置', open=False):
-                    view = gr.Radio([('正面 / 背面', 'front'), ('侧面', 'side'), ('不确定', 'unknown')], value='unknown', label='拍摄方向', info='只记录方向，不自动校正透视。')
+                    view = gr.Radio([('正面 / 背面', 'front'), ('侧面', 'side'), ('不确定', 'unknown')], value='side', label='拍摄方向', info='只记录方向，不自动校正透视。')
                     threshold = gr.Slider(.3, .95, value=.65, step=.05, label='关键点置信度')
-                    fps = gr.Radio([10, 15, 30], value=10, label='分析帧率', info='快速挥拍可选 30，处理耗时更长。')
-                    gr.Markdown('**人物区域** · 已按高尔夫示例设置裁剪。上传自己的视频后请调整；请确保整个动作都在框内。')
+                    fps = gr.Radio([10, 15, 30], value=15, label='分析帧率', info='快速挥拍可选 30，处理耗时更长。')
+                    gr.Markdown('**人物区域** · 默认使用完整画面。裁剪时请确保整个动作都在框内。')
                     with gr.Row():
-                        crop_left = gr.Number(value=25, minimum=0, maximum=95, label='左边起点 %')
-                        crop_top = gr.Number(value=40, minimum=0, maximum=95, label='上边起点 %')
+                        crop_left = gr.Number(value=0, minimum=0, maximum=95, label='左边起点 %')
+                        crop_top = gr.Number(value=0, minimum=0, maximum=95, label='上边起点 %')
                     with gr.Row():
-                        crop_width = gr.Number(value=35, minimum=5, maximum=100, label='区域宽度 %')
-                        crop_height = gr.Number(value=35, minimum=5, maximum=100, label='区域高度 %')
+                        crop_width = gr.Number(value=100, minimum=5, maximum=100, label='区域宽度 %')
+                        crop_height = gr.Number(value=100, minimum=5, maximum=100, label='区域高度 %')
                     preview_button = gr.Button('预览人物区域', size='sm')
                     preview_image = gr.Image(label='首帧裁剪预览', interactive=False)
                     preview_button.click(preview, [video, crop_left, crop_top, crop_width, crop_height], preview_image)
@@ -105,6 +106,9 @@ def build_app():
                         source = gr.Video(value=sample_path, label='原始录像 · 已载入高尔夫示例', interactive=False, height=365, elem_id='mc-source')
                     with gr.Tab('骨架回放', id='analysis'):
                         output = gr.Video(label='分析后显示骨架视频 · 无音轨', interactive=False, height=365)
+                with gr.Accordion('额外观看 · YouTube 来源赛事影像选段', open=False):
+                    gr.Video(value=str(Path(__file__).parent / 'examples/golf-event.mp4'), label='Dustin Johnson · FOX Sports · 720p', interactive=False)
+                    gr.Markdown('赛事宣传片选段，包含切镜头，不作为默认分析输入。[FOX Sports / CC BY 3.0](https://commons.wikimedia.org/wiki/File:History_Awaits_Dustin_Johnson_at_The_U.S._Open.webm) · 截取原片 1.7–5.7 秒并移除音轨。')
                 gr.HTML('<div class="mc-caption"><span class="mc-line"></span> 单人姿态追踪 <span>二维关节角度 / 动作变化 / 关键帧</span></div>')
         gr.HTML('<div class="mc-section mc-results-heading"><span>03 / INSIGHTS</span><h2>从回放到观察</h2><p>先看检测质量，再看角度和变化。缺失的关键点不会被当成有效测量。</p></div>')
         with gr.Tabs(elem_id='mc-insights'):
