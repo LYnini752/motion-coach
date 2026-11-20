@@ -1,5 +1,7 @@
 # Motion Coach · 运动姿态观察室
 
+[简体中文](README.md) | [English](README.en.md)
+
 输入一段录像，输出 **骨架视频、二维关节角度、动作变化曲线、关键帧候选和可下载的数据**。支持选择网球、高尔夫或滑雪；使用 MediaPipe Pose Landmarker 在本机处理。
 
 首版是可追溯的运动学观察工具。它不从普通录像推断真实力量、足底压力、雪板承重或伤病风险，也不把关键帧极值包装成专业动作评分。
@@ -21,6 +23,8 @@
 在仓库目录运行：
 
 ```bash
+git clone https://github.com/LYnini752/motion-coach.git
+cd motion-coach
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
