@@ -32,7 +32,7 @@ python cli.py --doctor
 python app.py
 ```
 
-打开 <http://127.0.0.1:7864>，上传录像，选择运动和惯用侧，点击“分析动作”。第一次会从 Google 官方地址下载约 5.5 MB 的姿态模型，并校验固定 SHA-256；模型缓存齐全后可离线分析。
+打开 <http://127.0.0.1:7864>，上传录像，选择运动和惯用侧，点击“开始分析”。第一次会从 Google 官方地址下载约 5.5 MB 的姿态模型，并校验固定 SHA-256；模型缓存齐全后可离线分析。
 
 ```bash
 python cli.py '/path/to/tennis.mp4' --sport tennis --side right --fps 30
@@ -102,3 +102,7 @@ python -m pytest -q
 ## 许可证
 
 本项目代码使用 MIT。MediaPipe 使用 Apache-2.0；姿态模型来自 [Google 官方 Pose Landmarker 文档](https://developers.google.com/edge/mediapipe/solutions/vision/pose_landmarker?tab=Python)。其他依赖与模型不因本仓库的 MIT 许可证而改换许可证。项目不分发第三方视频或测试照片。
+
+## 界面
+
+黑色与荧光绿色的本地分析工作台：左侧上传录像和设置，右侧切换原片与骨架回放，下方分栏查看观察摘要、角度曲线、关键帧和导出记录。上传新录像会清空上一份结果，分析成功后自动打开骨架回放。图表与骨架使用统一配色；不显示未经验证的动作评分或发力评分。

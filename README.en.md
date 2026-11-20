@@ -96,3 +96,7 @@ python -m pytest -q
 Lightweight CI covers geometry, time differences, missing values, jitter suppression, and mode differences. It does not replace real-video evaluation or professional coaching validation.
 
 Project code is MIT. MediaPipe is Apache-2.0; models come from the [official Pose Landmarker documentation](https://developers.google.com/edge/mediapipe/solutions/vision/pose_landmarker?tab=Python). Dependencies/models retain their respective licenses. No third-party videos or test photographs are distributed here.
+
+## Interface
+
+The black-and-neon-green studio places upload/settings on the left and source/skeleton playback on the right. Result tabs separate observations, angle charts, keyframes, and exports. Loading a new clip clears previous results; successful analysis opens skeleton playback. Charts and skeleton overlays follow the same palette. No unvalidated movement or force score is shown.

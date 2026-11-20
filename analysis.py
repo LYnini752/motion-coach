@@ -258,7 +258,7 @@ def _analyze(filename, threshold, sport, side, view, sample_fps, progress, crop=
                     for a, b in EDGES:
                         if visible(points[a], threshold) and visible(points[b], threshold):
                             pa, pb = [(int(points[i].x * width), int(points[i].y * height)) for i in (a, b)]
-                            cv2.line(frame, pa, pb, (60, 225, 170), 2)
+                            cv2.line(frame, pa, pb, (70, 255, 194), 2)
                             cv2.circle(frame, pa, 4, (60, 225, 170), -1)
                 elif len(detected.pose_landmarks) > 1:
                     cv2.putText(frame, 'Multiple poses; skipped', (8, 40), cv2.FONT_HERSHEY_SIMPLEX, font_scale, (70, 180, 255), 1)
@@ -316,7 +316,17 @@ def _analyze(filename, threshold, sport, side, view, sample_fps, progress, crop=
         with (job / 'measurements.csv').open('w', newline='', encoding='utf-8') as stream:
             csv_writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
             csv_writer.writeheader(); csv_writer.writerows(rows)
-        fig, axes = plt.subplots(2, 1, figsize=(11, 7), sharex=True)
+        fig, axes = plt.subplots(2, 1, figsize=(11, 7), sharex=True, facecolor='#0b100b')
+        palette = ['#c2ff46', '#5ce1b8', '#e5efb0', '#8cb85b', '#74b6e8', '#f4bf78', '#b8a7ef']
+        for ax in axes:
+            ax.set_facecolor('#111810')
+            ax.set_prop_cycle(color=palette)
+            ax.tick_params(colors='#bdcbb2')
+            ax.xaxis.label.set_color('#bdcbb2')
+            ax.yaxis.label.set_color('#bdcbb2')
+            ax.title.set_color('#edf3e9')
+            for spine in ax.spines.values():
+                spine.set_color('#34432b')
         times = [r['seconds'] for r in rows]
         for key in JOINTS:
             axes[0].plot(times, [r[key] if r[key] is not None else float('nan') for r in rows], label=key)
@@ -326,7 +336,8 @@ def _analyze(filename, threshold, sport, side, view, sample_fps, progress, crop=
             axes[1].plot(times, [r[key] if r[key] is not None else float('nan') for r in rows], label=side_name)
         axes[1].set(xlabel='Seconds', ylabel='degrees/s' if sport == 'skiing' else 'torso lengths/s', title='Observed motion rate (3-sample median)')
         for ax in axes:
-            ax.legend(loc='best'); ax.grid(alpha=.15)
+            ax.legend(loc='best', facecolor='#172011', edgecolor='#34432b', labelcolor='#d5e3ca', fontsize=8)
+            ax.grid(alpha=.15, color='#9ab580')
             ax.set_xlim(0, len(rows) / fps)
         fig.tight_layout(); fig.savefig(job / 'motion.png', dpi=140); plt.close(fig)
         stage('导出可播放视频', .9)
